@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="David Tian — AI & Energy Researcher working on distributed energy resource optimization, machine learning for power systems, and intelligent grid automation.">
+<title>David Tian — AI & Energy Researcher</title>
+<style>
+/* ── Reset & Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #111827;
+  --ink-2:     #374151;
+  --ink-3:     #6B7280;
+  --accent:    #1D4ED8;
+  --accent-lt: #EFF6FF;
+  --accent-md: #BFDBFE;
+  --border:    #E5E7EB;
+  --bg:        #FFFFFF;
+  --bg-2:      #F9FAFB;
+  --bg-3:      #F3F4F6;
+  --green:     #059669;
+  --green-lt:  #ECFDF5;
+  --radius:    12px;
+  --shadow:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── NAV ──────────────────────────────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+.nav-logo {
+  font-weight: 700; font-size: 16px; letter-spacing: -.3px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 8px; }
+.nav-links a {
+  padding: 6px 14px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: var(--ink-2);
+  transition: background .15s, color .15s;
+}
+.nav-links a:hover { background: var(--bg-3); color: var(--ink); }
+.nav-links a.active { background: var(--accent-lt); color: var(--accent); }
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+#hero {
+  padding: 96px 24px 80px;
+  max-width: 900px; margin: 0 auto;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-lt); color: var(--accent);
+  padding: 5px 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  margin-bottom: 28px;
+}
+.hero-tag .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; } 50% { opacity: .4; }
+}
+#hero h1 {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+#hero h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--accent) 0%, #7C3AED 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-bio {
+  font-size: 18px; color: var(--ink-2); max-width: 600px;
+  line-height: 1.7; margin-bottom: 36px;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  transition: all .15s; cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+}
+.btn-primary:hover { background: #1E40AF; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(29,78,216,.35); }
+.btn-secondary {
+  background: var(--bg-3); color: var(--ink-2); border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--border); color: var(--ink); transform: translateY(-1px); }
+
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  padding-top: 32px; border-top: 1px solid var(--border);
+}
+.stat-item { }
+.stat-num { font-size: 28px; font-weight: 800; letter-spacing: -1px; color: var(--ink); }
+.stat-label { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+
+/* ── SECTION BASE ─────────────────────────────────────────────────────── */
+section { padding: 80px 0; border-top: 1px solid var(--border); }
+.section-eyebrow {
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(26px, 4vw, 34px); font-weight: 800;
+  letter-spacing: -1px; margin-bottom: 16px;
+}
+.section-sub { font-size: 16px; color: var(--ink-2); max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+
+/* ── ABOUT ────────────────────────────────────────────────────────────── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+}
+@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+.about-text p { font-size: 15px; color: var(--ink-2); line-height: 1.8; margin-bottom: 16px; }
+.about-text p:last-child { margin-bottom: 0; }
+
+.expertise-col h3 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
+.tag-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.tag {
+  padding: 5px 12px; border-radius: 8px;
+  font-size: 13px; font-weight: 500;
+  background: var(--bg-3); color: var(--ink-2);
+  border: 1px solid var(--border);
+}
+.tag.accent { background: var(--accent-lt); color: var(--accent); border-color: var(--accent-md); }
+.tag.green  { background: var(--green-lt);  color: var(--green);  border-color: #A7F3D0; }
+
+/* ── PROJECTS ─────────────────────────────────────────────────────────── */
+.projects-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;
+}
+.project-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+  transition: box-shadow .2s, transform .2s;
+  display: flex; flex-direction: column;
+}
+.project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.project-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent-lt); display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 20px; flex-shrink: 0;
+}
+.project-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.project-desc { font-size: 14px; color: var(--ink-2); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.project-tag {
+  font-size: 11px; font-weight: 600; padding: 3px 9px;
+  border-radius: 6px; background: var(--bg-3); color: var(--ink-3);
+}
+.project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  margin-top: auto;
+}
+.project-link:hover { gap: 9px; }
+.project-link .arrow { transition: transform .15s; }
+.project-link:hover .arrow { transform: translateX(3px); }
+
+/* ── LEARNING ─────────────────────────────────────────────────────────── */
+#learning { background: var(--bg-2); border-top: 1px solid var(--border); }
+.learning-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+@media (max-width: 640px) { .learning-grid { grid-template-columns: 1fr; } }
+.learn-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px;
+  transition: box-shadow .15s;
+}
+.learn-card:hover { box-shadow: var(--shadow-md); }
+.learn-card-head {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+}
+.learn-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+  flex-shrink: 0;
+}
+.learn-card-title { font-size: 15px; font-weight: 700; }
+.learn-card-sub   { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.learn-items { list-style: none; }
+.learn-items li {
+  display: flex; align-items: baseline; gap: 8px;
+  font-size: 14px; color: var(--ink-2); padding: 5px 0;
+  border-bottom: 1px solid var(--bg-3);
+}
+.learn-items li:last-child { border-bottom: none; }
+.learn-items li::before { content: "→"; color: var(--accent); font-size: 12px; flex-shrink: 0; }
+
+.progress-row {
+  display: flex; align-items: center; gap: 12px; margin-top: 16px;
+}
+.progress-label { font-size: 12px; color: var(--ink-3); white-space: nowrap; }
+.progress-bar {
+  flex: 1; height: 5px; background: var(--bg-3); border-radius: 999px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent), #7C3AED);
+  border-radius: 999px;
+}
+.progress-pct { font-size: 12px; font-weight: 700; color: var(--accent); }
+
+/* ── CONTACT ──────────────────────────────────────────────────────────── */
+.contact-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+}
+@media (max-width: 640px) { .contact-wrap { grid-template-columns: 1fr; } }
+.contact-intro { font-size: 15px; color: var(--ink-2); line-height: 1.8; }
+
+.contact-links { display: flex; flex-direction: column; gap: 12px; }
+.contact-link {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg);
+  transition: all .15s;
+}
+.contact-link:hover {
+  border-color: var(--accent-md); background: var(--accent-lt);
+  transform: translateX(4px);
+}
+.contact-link-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; background: var(--bg-3); flex-shrink: 0;
+}
+.contact-link:hover .contact-link-icon { background: var(--accent-md); }
+.contact-link-text { flex: 1; }
+.contact-link-label { font-size: 13px; font-weight: 700; color: var(--ink); }
+.contact-link-val   { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+.contact-link .go   { font-size: 16px; color: var(--ink-3); }
+.contact-link:hover .go { color: var(--accent); }
+
+/* ── FOOTER ───────────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  max-width: 900px; margin: 0 auto;
+  font-size: 13px; color: var(--ink-3);
+}
+footer a { color: var(--accent); font-weight: 500; }
+footer a:hover { text-decoration: underline; }
+
+/* ── REVEAL ANIMATION ─────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">David <span>Tian</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#learning">Learning</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-tag">
+    <span class="dot"></span>
+    AI &amp; Energy Researcher
+  </div>
+  <h1>Building intelligent<br>systems for <em>clean energy</em></h1>
+  <p class="hero-bio">
+    I research machine learning applications for power systems and distributed energy resources —
+    from load forecasting and DER dispatch optimization to graph neural networks for smart grids.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      View Projects
+    </a>
+    <a href="#contact" class="btn btn-secondary">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 4l8 9 8-9"/></svg>
+      Get in Touch
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years in Power Systems</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Active AI Projects</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100h</div>
+      <div class="stat-label">AI Learning Roadmap</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">DER</div>
+      <div class="stat-label">Optimization Focus</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">About</div>
+      <div class="section-title">Where AI meets the grid</div>
+      <div class="section-sub">I combine deep power systems engineering experience with modern machine learning to solve real-world energy challenges.</div>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          My work sits at the intersection of power systems engineering and artificial intelligence.
+          I focus on applying ML techniques — from gradient-boosted trees to transformer models and
+          reinforcement learning — to problems that matter in the energy transition.
+        </p>
+        <p>
+          I'm particularly interested in DER coordination, microgrid optimization, and using graph
+          neural networks to model complex grid topologies. I believe AI will be a key enabler of
+          a reliable, decarbonized power system.
+        </p>
+        <p>
+          Outside of research, I document my learning journey in public — including a 100-hour AI
+          roadmap and study guides designed for engineers entering the AI space.
+        </p>
+      </div>
+      <div class="expertise-col">
+        <h3>Power Systems</h3>
+        <div class="tag-group">
+          <span class="tag green">DER Optimization</span>
+          <span class="tag green">Microgrid Control</span>
+          <span class="tag green">Load Forecasting</span>
+          <span class="tag green">Grid Stability</span>
+          <span class="tag green">Energy Storage</span>
+          <span class="tag green">SCADA / EMS</span>
+        </div>
+        <h3>AI &amp; Machine Learning</h3>
+        <div class="tag-group">
+          <span class="tag accent">Deep Learning</span>
+          <span class="tag accent">Transformers</span>
+          <span class="tag accent">Reinforcement Learning</span>
+          <span class="tag accent">Graph Neural Networks</span>
+          <span class="tag accent">Time-Series ML</span>
+          <span class="tag accent">LLMs</span>
+        </div>
+        <h3>Tools</h3>
+        <div class="tag-group">
+          <span class="tag">Python</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Scikit-learn</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">CityLearn</span>
+          <span class="tag">Grid2Op</span>
+          <span class="tag">PyPSA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Projects</div>
+      <div class="section-title">Selected work</div>
+      <div class="section-sub">Research and engineering projects applying AI to power systems challenges.</div>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-icon">⚡</div>
+        <div class="project-title">DER Dispatch RL Agent</div>
+        <div class="project-desc">
+          A reinforcement learning agent (PPO) that optimizes battery and solar dispatch
+          in a multi-building microgrid to minimize cost and peak demand. Built on
+          the CityLearn environment with a custom reward function incorporating carbon intensity.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Reinforcement Learning</span>
+          <span class="project-tag">PyTorch</span>
+          <span class="project-tag">CityLearn</span>
+          <span class="project-tag">DER</span>
+        </div>
+        <a href="#" class="project-link">
+          View on GitHub <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">📈</div>
+        <div class="project-title">Solar &amp; Load Forecasting</div>
+        <div class="project-desc">
+          An ensemble forecasting pipeline combining Temporal Fusion Transformers and
+          XGBoost for 24-hour ahead PV generation and load prediction. Evaluated on
+          GEFCom2014 data with MAPE below 3.2% for load and 6.1% for solar.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Transformers</span>
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">Time-Series</span>
+          <span class="project-tag">Forecasting</span>
+        </div>
+        <a href="#" class="project-link">
+          View on GitHub <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-icon">🔬</div>
+        <div class="project-title">GNN for Fault Location</div>
+        <div class="project-desc">
+          A Graph Neural Network trained on the IEEE 14-bus test case to localize
+          faults from PMU measurements. Achieves 94% accuracy on unseen fault types
+          without requiring full observability of the network.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Graph Neural Networks</span>
+          <span class="project-tag">PyG</span>
+          <span class="project-tag">Power Flow</span>
+          <span class="project-tag">IEEE 14-bus</span>
+        </div>
+        <a href="#" class="project-link">
+          View on GitHub <span class="arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LEARNING -->
+<section id="learning">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Learning</div>
+      <div class="section-title">Currently studying</div>
+      <div class="section-sub">I learn in public and document my journey. Here's what I'm working through right now.</div>
+    </div>
+    <div class="learning-grid">
+
+      <div class="learn-card reveal">
+        <div class="learn-card-head">
+          <div class="learn-icon" style="background:#EFF6FF">🤖</div>
+          <div>
+            <div class="learn-card-title">100-Hour AI Roadmap</div>
+            <div class="learn-card-sub">Deep AI understanding for engineers</div>
+          </div>
+        </div>
+        <ul class="learn-items">
+          <li>Mathematical foundations (linear algebra, calculus, probability)</li>
+          <li>Classical ML — supervised, unsupervised, ensembles</li>
+          <li>Deep learning — CNNs, LSTMs, attention mechanisms</li>
+          <li>Transformers &amp; LLMs from scratch</li>
+          <li>AI applications for power systems &amp; DER</li>
+        </ul>
+        <div class="progress-row">
+          <span class="progress-label">Progress</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width:40%"></div></div>
+          <span class="progress-pct">40%</span>
+        </div>
+      </div>
+
+      <div class="learn-card reveal">
+        <div class="learn-card-head">
+          <div class="learn-icon" style="background:#ECFDF5">📚</div>
+          <div>
+            <div class="learn-card-title">Current Reading</div>
+            <div class="learn-card-sub">Books &amp; papers on my desk</div>
+          </div>
+        </div>
+        <ul class="learn-items">
+          <li>Deep Learning — Goodfellow, Bengio &amp; Courville</li>
+          <li>RL: An Introduction — Sutton &amp; Barto</li>
+          <li>NLP with Transformers — Tunstall et al.</li>
+          <li>Graph Neural Networks in Action — Stamile et al.</li>
+          <li>IEEE Trans. on Power Systems (latest issue)</li>
+        </ul>
+        <div class="progress-row">
+          <span class="progress-label">Books read</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width:60%"></div></div>
+          <span class="progress-pct">3/5</span>
+        </div>
+      </div>
+
+      <div class="learn-card reveal">
+        <div class="learn-card-head">
+          <div class="learn-icon" style="background:#F5F3FF">💡</div>
+          <div>
+            <div class="learn-card-title">Mastering Claude</div>
+            <div class="learn-card-sub">10-hour AI assistant roadmap</div>
+          </div>
+        </div>
+        <ul class="learn-items">
+          <li>Prompt engineering &amp; chain-of-thought reasoning</li>
+          <li>Building AI workflows for power systems analysis</li>
+          <li>Extended thinking for complex optimization problems</li>
+          <li>Automating research summarization pipelines</li>
+        </ul>
+        <div class="progress-row">
+          <span class="progress-label">Progress</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width:70%"></div></div>
+          <span class="progress-pct">70%</span>
+        </div>
+      </div>
+
+      <div class="learn-card reveal">
+        <div class="learn-card-head">
+          <div class="learn-icon" style="background:#FEF9C3">🏗️</div>
+          <div>
+            <div class="learn-card-title">Building in Public</div>
+            <div class="learn-card-sub">Side projects &amp; experiments</div>
+          </div>
+        </div>
+        <ul class="learn-items">
+          <li>Personal website (this page!) — deployed on GitHub Pages</li>
+          <li>DER RL agent on CityLearn environment</li>
+          <li>AI learning roadmap documents &amp; guides</li>
+          <li>Weekly notes on AI × energy systems</li>
+        </ul>
+        <div class="progress-row">
+          <span class="progress-label">Projects live</span>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width:50%"></div></div>
+          <span class="progress-pct">2/4</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Contact</div>
+      <div class="section-title">Let's connect</div>
+    </div>
+    <div class="contact-wrap reveal">
+      <div>
+        <p class="contact-intro">
+          I'm always happy to talk about AI for energy systems, grid optimization,
+          or machine learning in general. Whether it's a research collaboration,
+          a project idea, or just a question — feel free to reach out.
+        </p>
+        <br>
+        <p class="contact-intro" style="color:var(--ink-3); font-size:14px;">
+          Based in &nbsp;🇨🇳&nbsp; China &nbsp;·&nbsp; Open to remote collaboration worldwide
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:twxjtu@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">twxjtu@gmail.com</div>
+          </div>
+          <span class="go">→</span>
+        </a>
+        <a href="https://github.com/sinceretw" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-val">github.com/sinceretw</div>
+          </div>
+          <span class="go">→</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="contact-link">
+          <div class="contact-link-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-val">linkedin.com/in/davidtian</div>
+          </div>
+          <span class="go">→</span>
+        </a>
+        <a href="https://wtian.net" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🌐</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Website</div>
+            <div class="contact-link-val">www.wtian.net</div>
+          </div>
+          <span class="go">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 David Tian · Built with care</span>
+  <span>
+    <a href="https://github.com/sinceretw/sinceretw.github.io" target="_blank">Hosted on GitHub Pages</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.anthropic.com" target="_blank">Powered by Claude</a>
+  </span>
+</footer>
+
+<script>
+// ── Scroll reveal ─────────────────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 80 + 'ms';
+  observer.observe(el);
+});
+
+// ── Active nav highlight ──────────────────────────────────────────────────────
+const sections = document.querySelectorAll('section[id], #hero');
+const navLinks  = document.querySelectorAll('.nav-links a');
+
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+
+document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
